@@ -1,0 +1,4 @@
+type,name,path,value
+# Shared section - common linked services, global parameters, common properties, etc.
+linkedService,AzureDataLakeStorage1,typeProperties.url,"https://dldatalakedev23.dfs.core.windows.net/"
+

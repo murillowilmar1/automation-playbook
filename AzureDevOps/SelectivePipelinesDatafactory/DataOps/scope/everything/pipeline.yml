@@ -1,0 +1,21 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: 'DEV'
+  variables:
+  - group: 'DEV'
+  jobs:
+  - template: '../../generic/adf-selective-deploy-job-template.yml'
+    parameters:
+      environmentName: 'DEV'
+      rootFolder: '$(System.DefaultWorkingDirectory)/Datafactory'
+      dataFactoryName: 'adfpruena-deve'
+      location: 'East US'
+      resourceGroupName: 'gr-pruebadev-adf'
+      configPath: '$(System.DefaultWorkingDirectory)/DataOps/config/DEV.csv'
+      serviceConnectionName: 'ServiceConection'
+      deploymentScriptPath: '$(System.DefaultWorkingDirectory)/DataOps/scope/everything/deploy-script.ps1'
